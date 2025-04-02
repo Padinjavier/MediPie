@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPie - Podología Médica y Estética</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2966/2966321.png" type="image/png">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- SweetAlert -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        :root {
+            --primary-color: #5ab834;
+            --secondary-color: #155e14;
+            --light-bg: #f0f9ee;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        .hero {
+            /* background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover; */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://emsalud.com/wp-content/uploads/2023/08/podologia-1024x640.png') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .icono {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .section-bg {
+            background-color: var(--light-bg);
+            padding: 80px 0;
+        }
+        .service-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: none;
+            height: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--secondary-color) !important;
+        }
+        .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 500;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            font-weight: 500;
+        }
+        .btn-primary:hover {
+            background-color: #4aa02d;
+            border-color: #4aa02d;
+        }
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        .contact-info {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .header-text {
+            color: var(--secondary-color) !important;
+        }
+        .treatment-item {
+            margin-bottom: 40px;
+        }
+        .treatment-img {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+        }
+        [data-aos] {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .aos-animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-foot-print me-2"></i>MediPie
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tratamientos">Tratamientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero">
+        <div class="container" data-aos="fade-up">
+            <h1 class="display-3 fw-bold mb-3">MediPie</h1>
+            <h2 class="display-5 mb-4">Podología Médica y Estética</h2>
+            <p class="lead mb-4">¡La salud y belleza de tus pies en manos profesionales!</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#contacto" class="btn btn-primary btn-lg px-4">
+                    <i class="fas fa-calendar-check me-2"></i>Agendar Cita
+                </a>
+                <a href="#servicios" class="btn btn-outline-light btn-lg px-4">
+                    <i class="fas fa-info-circle me-2"></i>Conoce más
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Servicios Destacados -->
+    <section id="servicios" class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold header-text">Nuestros Servicios Especializados</h2>
+            <p class="lead">Soluciones integrales para el cuidado de tus pies</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="service-card h-100">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e37700f6ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" class="card-img-top" alt="Tratamiento de hongos">
+                    <div class="card-body text-center">
+                        <i class="fas fa-bacteria icono"></i>
+                        <h4 class="card-title">Tratamiento de Hongos</h4>
+                        <p class="card-text">Soluciones efectivas para eliminar hongos en uñas y piel, devolviendo la salud y apariencia natural a tus pies.</p>
+                        <a href="#tratamientos" class="btn btn-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card h-100">
+                    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Podología estética">
+                    <div class="card-body text-center">
+                        <i class="fas fa-spa icono"></i>
+                        <h4 class="card-title">Podología Estética</h4>
+                        <p class="card-text">Tratamientos para lucir unos pies hermosos y saludables, incluyendo pedicura médica y cuidado de uñas.</p>
+                        <a href="#tratamientos" class="btn btn-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card h-100">
+                    <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Grietas en talones">
+                    <div class="card-body text-center">
+                        <i class="fas fa-cut icono"></i>
+                        <h4 class="card-title">Grietas en Talones</h4>
+                        <p class="card-text">Tratamiento profesional para talones agrietados, eliminando dolor y mejorando la apariencia de tus pies.</p>
+                        <a href="#tratamientos" class="btn btn-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección de Tratamientos Detallados -->
+    <section id="tratamientos" class="section-bg">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold header-text">Nuestros Tratamientos Especializados</h2>
+                <p class="lead">Conoce en detalle cada uno de nuestros servicios podológicos</p>
+            </div>
+            
+            <div class="row align-items-center treatment-item" data-aos="fade-up">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba822d033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Pie diabético" class="treatment-img">
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-3 header-text">Atención de Pie Diabético</h3>
+                    <p>El pie diabético requiere cuidados especializados debido a la disminución de la sensibilidad y circulación. Nuestro tratamiento incluye:</p>
+                    <ul>
+                        <li>Evaluación completa de sensibilidad y circulación</li>
+                        <li>Tratamiento de úlceras y heridas</li>
+                        <li>Prevención de complicaciones</li>
+                        <li>Educación para el cuidado diario</li>
+                        <li>Control y seguimiento periódico</li>
+                    </ul>
+                    <p>Nuestro enfoque preventivo ayuda a evitar amputaciones y complicaciones graves asociadas a la diabetes.</p>
+                </div>
+            </div>
+            
+            <div class="row align-items-center treatment-item" data-aos="fade-up">
+                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Podología geriátrica" class="treatment-img">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <h3 class="fw-bold mb-3 header-text">Podología Geriátrica</h3>
+                    <p>Los pies en la tercera edad requieren atención especial. Ofrecemos:</p>
+                    <ul>
+                        <li>Tratamiento de uñas engrosadas y encarnadas</li>
+                        <li>Cuidado de callosidades y durezas</li>
+                        <li>Alivio de dolores articulares</li>
+                        <li>Ortesis personalizadas para mayor comodidad</li>
+                        <li>Recomendaciones de calzado adecuado</li>
+                    </ul>
+                    <p>Mejoramos la movilidad y calidad de vida de nuestros pacientes mayores con tratamientos indoloros y efectivos.</p>
+                </div>
+            </div>
+            
+            <div class="row align-items-center treatment-item" data-aos="fade-up">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Podología deportiva" class="treatment-img">
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-3 header-text">Podología Deportiva</h3>
+                    <p>Para atletas y personas activas, ofrecemos:</p>
+                    <ul>
+                        <li>Análisis biomecánico de la pisada</li>
+                        <li>Tratamiento de ampollas y rozaduras</li>
+                        <li>Prevención y tratamiento de lesiones</li>
+                        <li>Recomendaciones de calzado deportivo</li>
+                        <li>Plantillas personalizadas para mejorar el rendimiento</li>
+                    </ul>
+                    <p>Optimizamos tu rendimiento deportivo y prevenimos lesiones con técnicas especializadas.</p>
+                </div>
+            </div>
+            
+            <div class="row align-items-center treatment-item" data-aos="fade-up">
+                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e37700f6ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Tratamiento de hongos" class="treatment-img">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <h3 class="fw-bold mb-3 header-text">Tratamiento de Hongos</h3>
+                    <p>Soluciones efectivas para infecciones micóticas:</p>
+                    <ul>
+                        <li>Hongos en uñas (onicomicosis)</li>
+                        <li>Pie de atleta (tinea pedis)</li>
+                        <li>Infecciones por humedad</li>
+                        <li>Tratamientos tópicos y sistémicos</li>
+                        <li>Láser para hongos resistentes</li>
+                    </ul>
+                    <p>Nuestros tratamientos combaten eficazmente los hongos, eliminando la infección y previniendo su reaparición.</p>
+                </div>
+            </div>
+            
+            <div class="row align-items-center treatment-item" data-aos="fade-up">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Grietas en talones" class="treatment-img">
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-3 header-text">Grietas en Talones</h3>
+                    <p>Tratamiento profesional para talones agrietados:</p>
+                    <ul>
+                        <li>Eliminación indolora de piel dura</li>
+                        <li>Hidratación profunda</li>
+                        <li>Tratamiento para grietas profundas</li>
+                        <li>Recomendaciones para cuidado en casa</li>
+                        <li>Prevención de infecciones</li>
+                    </ul>
+                    <p>Devolvemos la suavidad a tus talones y eliminamos el dolor asociado a las grietas profundas.</p>
+                </div>
+            </div>
+            
+            <div class="row align-items-center treatment-item" data-aos="fade-up">
+                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pedicura médica" class="treatment-img">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <h3 class="fw-bold mb-3 header-text">Pedicura Médica</h3>
+                    <p>Más que un tratamiento estético:</p>
+                    <ul>
+                        <li>Corte profesional de uñas</li>
+                        <li>Tratamiento de uñas encarnadas</li>
+                        <li>Eliminación de callos y durezas</li>
+                        <li>Hidratación profunda</li>
+                        <li>Masaje relajante</li>
+                    </ul>
+                    <p>Una pedicura médica no solo embellece tus pies, sino que previene problemas futuros y mantiene la salud podológica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Beneficios -->
+    <section class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold header-text">¿Por qué elegir MediPie?</h2>
+            <p class="lead">La mejor atención para la salud de tus pies</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-center p-4 h-100">
+                    <i class="fas fa-user-md icono"></i>
+                    <h4>Profesionales Certificados</h4>
+                    <p>Contamos con podólogos altamente capacitados y con amplia experiencia en el diagnóstico y tratamiento de diversas afecciones podológicas.</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-center p-4 h-100">
+                    <i class="fas fa-procedures icono"></i>
+                    <h4>Equipos Modernos</h4>
+                    <p>Tecnología de última generación para diagnósticos precisos y tratamientos efectivos, incluyendo láser para hongos y equipos biomecánicos.</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="text-center p-4 h-100">
+                    <i class="fas fa-heartbeat icono"></i>
+                    <h4>Enfoque Integral</h4>
+                    <p>No solo tratamos síntomas, buscamos solucionar las causas de los problemas mediante un enfoque holístico que considera tu salud general.</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="text-center p-4 h-100">
+                    <i class="fas fa-hand-holding-medical icono"></i>
+                    <h4>Atención Personalizada</h4>
+                    <p>Cada tratamiento es diseñado específicamente para tus necesidades, con seguimiento continuo hasta la completa recuperación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección de Promoción -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-3">¡Luce unos pies increíbles!</h2>
+            <p class="lead mb-4">Sesión de pedicura médica por solo $250</p>
+            <a href="#contacto" class="btn btn-light btn-lg px-4">
+                <i class="fas fa-calendar-alt me-2"></i>Agendar ahora
+            </a>
+        </div>
+    </section>
+    
+    <!-- Sobre Nosotros -->
+    <section id="nosotros" class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Martha Elena Flores Chiok" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <h2 class="fw-bold mb-4 header-text">Martha Elena Flores Chiok</h2>
+                <p class="lead">Podóloga profesional con más de 15 años de experiencia en el cuidado integral de los pies.</p>
+                <p>Como especialista en podología médica y estética, me he dedicado a ayudar a cientos de pacientes a recuperar la salud y belleza de sus pies. Mi enfoque combina los últimos avances en podología con un trato humano y personalizado.</p>
+                <p>Estoy comprometida con la educación continua y participo regularmente en congresos y capacitaciones para ofrecer siempre los tratamientos más efectivos y modernos.</p>
+                <div class="mt-4">
+                    <h5 class="fw-bold">Certificaciones:</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-certificate text-primary me-2"></i> Diplomado en Podología Avanzada</li>
+                        <li><i class="fas fa-certificate text-primary me-2"></i> Especialización en Pie Diabético</li>
+                        <li><i class="fas fa-certificate text-primary me-2"></i> Máster en Ortopodología</li>
+                        <li><i class="fas fa-certificate text-primary me-2"></i> Certificación en Láser Podológico</li>
+                        <li><i class="fas fa-certificate text-primary me-2"></i> Especialización en Biomecánica del Pie</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contacto -->
+    <section id="contacto" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                    <h2 class="fw-bold mb-4 header-text">Contacto</h2>
+                    <p class="lead mb-4">Agenda tu cita hoy mismo y comienza el camino hacia unos pies más saludables.</p>
+                    
+                    <div class="contact-info">
+                        <h4 class="text-white mb-4"><i class="fas fa-map-marker-alt me-2"></i>Dirección</h4>
+                        <p class="mb-4">Av. Arequipa 600, Quilmaná 15712</p>
+                        
+                        <h4 class="text-white mb-4"><i class="fas fa-phone-alt me-2"></i>Teléfono</h4>
+                        <p class="mb-4">954149814</p>
+                        
+                        <h4 class="text-white mb-4"><i class="fas fa-envelope me-2"></i>Correo electrónico</h4>
+                        <p class="mb-4">info@medipie.com</p>
+                        
+                        <h4 class="text-white mb-4"><i class="fas fa-clock me-2"></i>Horario de atención</h4>
+                        <p class="mb-0">Lunes a Viernes: 9:00 am - 6:00 pm</p>
+                        <p>Sábados: 9:00 am - 1:00 pm</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="mb-4 header-text">Formulario de contacto</h3>
+                        <form id="citaForm">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="telefono" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="servicio" class="form-label">Servicio de interés</label>
+                                <select class="form-select" id="servicio" required>
+                                    <option value="" selected disabled>Seleccione un servicio</option>
+                                    <option>Pie diabético</option>
+                                    <option>Podología geriátrica</option>
+                                    <option>Podología deportiva</option>
+                                    <option>Tratamiento de hongos</option>
+                                    <option>Tratamiento de pie de atleta</option>
+                                    <option>Grietas en talones</option>
+                                    <option>Confección de uñas</option>
+                                    <option>Ortesis de silicona</option>
+                                    <option>Pedicura médica</option>
+                                    <option>Otro</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensaje" class="form-label">Mensaje adicional</label>
+                                <textarea class="form-control" id="mensaje" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Enviar mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h3 class="text-white mb-3"><i class="fas fa-foot-print me-2"></i>MediPie</h3>
+                    <p class="mb-0 text-white-50">Podología médica y estética profesional.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="text-white"><i class="fas fa-globe"></i></a>
+                </div>
+            </div>
+            <hr class="my-4 bg-white-50">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0 text-white-50">&copy; 2023 MediPie. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white-50 me-3">Política de privacidad</a>
+                    <a href="#" class="text-white-50">Términos y condiciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 120
+        });
+        
+        // Manejar el formulario de contacto
+        document.getElementById('citaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener los valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const email = document.getElementById('email').value;
+            const servicio = document.getElementById('servicio').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            // Número de WhatsApp de Martha
+            const numeroWhatsApp = '51954149814';
+            
+            // Crear el mensaje estructurado para WhatsApp
+            let textoWhatsApp = `¡Hola *Martha*! 👋\n\n`;
+            textoWhatsApp += `*Solicitud de cita para podología*\n\n`;
+            textoWhatsApp += `📌 *Servicio solicitado:* ${servicio}\n`;
+            textoWhatsApp += `👤 *Nombre:* ${nombre}\n`;
+            textoWhatsApp += `📱 *Teléfono:* ${telefono}\n`;
+            
+            if(email) {
+                textoWhatsApp += `📧 *Correo:* ${email}\n\n`;
+            } else {
+                textoWhatsApp += `\n`;
+            }
+            
+            if(mensaje) {
+                textoWhatsApp += `💬 *Mensaje adicional:*\n${mensaje}\n\n`;
+            }
+            
+            textoWhatsApp += `Muchas gracias por su atención. Estaré atento(a) a su respuesta para coordinar la cita. 😊\n\n`;
+            textoWhatsApp += `*Saludos cordiales,*\n${nombre}`;
+            
+            // Codificar el texto para URL
+            const textoCodificado = encodeURIComponent(textoWhatsApp);
+            
+            // Crear el enlace de WhatsApp
+            const whatsappLink = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${textoCodificado}`;
+            
+            // Mostrar SweetAlert antes de redirigir
+            Swal.fire({
+                title: '¡Solicitud lista!',
+                html: `
+                    <p>Será redirigido a WhatsApp para completar su solicitud de cita.</p>
+                    <p class="mb-3">Por favor, confirme el envío del mensaje en WhatsApp.</p>
+                    <div class="alert alert-info p-2">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Si no tiene WhatsApp instalado, puede comunicarse al 954149814
+                    </div>
+                `,
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonColor: '#5ab834',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: '<i class="fab fa-whatsapp me-2"></i>Abrir WhatsApp',
+                cancelButtonText: 'Cancelar',
+                backdrop: `
+                    rgba(0,0,0,0.7)
+                    url("https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif")
+                    center top
+                    no-repeat
+                `,
+                allowOutsideClick: false,
+                customClass: {
+                    popup: 'border-radius-15'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Abrir el enlace en una nueva pestaña
+                    window.open(whatsappLink, '_blank');
+                    // Resetear el formulario
+                    this.reset();
+                }
+            });
+        });
+        
+        // Animación para elementos que salen de la vista
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                        // Elemento ha salido de la vista hacia arriba
+                        entry.target.classList.remove('aos-animate');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar todos los elementos con data-aos
+            document.querySelectorAll('[data-aos]').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
